@@ -5,6 +5,6 @@ def getImages():
 	conn = sqlite3.connect('DobbleImages.sqlite')
 	cursor = conn.cursor()
 	cursor.execute("""SELECT id FROM images""")
-	images = cursor.fetchAll()
+	images = cursor.fetchall()
 	conn.close()
 	return images
