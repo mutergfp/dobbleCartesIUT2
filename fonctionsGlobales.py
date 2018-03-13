@@ -1,7 +1,8 @@
 import os
+import sqlite3
 
 def getImages():
-	images = 60*[0]
-	for i in range(len(images)): 
-	  images[i] = i
+	conn = sqlite3.connect('DobbleImages.sqlite')
+	cursor.execute("""SELECT id FROM images""")
+	images = cursor.fetchAll()
 	return images
