@@ -10,7 +10,7 @@ import sqlite3
 import glob
 from flask import make_response
 import imghdr
-import Image
+from PIL import Image
 
 def add_img(img):
 	"""
