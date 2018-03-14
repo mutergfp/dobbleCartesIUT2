@@ -31,4 +31,6 @@ def afficherContenu(conn):
 	
 conn = sqlite3.connect('DobbleImages.sqlite')
 
+creerSchema(conn)
+peuplerBase(conn)
 afficherContenu(conn)
