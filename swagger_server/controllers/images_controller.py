@@ -10,6 +10,7 @@ import sqlite3
 import glob
 from flask import make_response
 import imghdr
+import Image
 
 def add_img(img):
 	"""
@@ -66,6 +67,8 @@ def get_img(id):
 		cursor.execute(sql)	
 		res = cursor.fetchone()
 		if res[0]:
-			return res[0]
+			img = res[0]
+			img = img.resize((200,200), Image.ANTIALIAS)
+			return img
 		else: 
 			return make_response("Invalid id supplied", 400)
