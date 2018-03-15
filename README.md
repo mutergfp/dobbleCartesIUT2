@@ -1,3 +1,4 @@
+
 Dobble serveur génération des cartes
 ===
 
@@ -8,6 +9,7 @@ Ce serveur est une API REST permettant de gérer la gestion des cartes du jeu, i
 * Générer une nouvelle carte centrale en fonction des cartes des joueurs actuels
 * Récupérer une image stockée dans la base de données en précisant son id
 * Ajouter une image à la base de données
+* Récupérer tous les id des images contenues dans la base de données
 
 
 ## Les routes disponibles
@@ -19,6 +21,8 @@ Ce serveur est une API REST permettant de gérer la gestion des cartes du jeu, i
 | /carte | POST| Un tableau contenant les cartes des x joueurs **[[Number]]** | Une nouvelle carte centrale **[Number]** |
 | /image/{id} | GET | L'id de l'image souhaitée | Image demandée ou code 400 si l'image n'existe pas **Buffer** |
 | /image | POST | L'image à ajouter **Buffer** | Code 200 pour réussite, code 400 en cas d'erreur **String(url)**|
+| /images | GET | **Void** | Code 200 pour réussite accompagné de tous les id des images stockées **[Number]**|
+
 
 ## Les algorithmes utilisés
 
@@ -61,14 +65,14 @@ Puis on retourne le tableau cartes[] accompagné d'un code **200**
 #### Algorithme
 
 Pour i allant jusqu'à nJoueurs
-	On séléctionne une des 8 images contenues dans la carte du joueurs i
-	mais qui n'est NI déjà dans carteMilieu[] NI dans les cartes de tous les joueurs autre que le joueur i
-	on stocke l'image dans carteMilieu[i]
+&ensp;On séléctionne une des 8 images contenues dans la carte du joueurs i
+&ensp;mais qui n'est NI déjà dans carteMilieu[] NI dans les cartes de tous les joueurs autre que le joueur i
+&ensp;on stocke l'image dans carteMilieu[i]
 	
 pour i allant de nbJoueurs à 8
-	On séléctionne une image aléatoire dans images[]
-	qui n'est NI dans cartesJoueurs NI déjà dans carteMilieu
-	on stocke l'image séléctionnée dans carteMilieu[i]
+&ensp;On séléctionne une image aléatoire dans images[]
+&ensp;qui n'est NI dans cartesJoueurs NI déjà dans carteMilieu
+&ensp;on stocke l'image séléctionnée dans carteMilieu[i]
 	
 On mélange carteMilieu puis on la retourne accompagnée d'un code **200**
 	
