@@ -10,5 +10,6 @@ node {
 	stage('Run image') {
 		sh 'docker stop dobbleCartes'
 		app.run('-p 82:8080 -it --rm --name dobbleCartes')
+		sh 'docker network connect network dobbleCartes --alias dobbleCartes'
 	}
 }
