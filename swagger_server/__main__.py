@@ -12,4 +12,4 @@ if __name__ == '__main__':
 	
 	CORS(app.app)
 	
-	app.run(port=8080)
+	app.run(port=8080, threaded=True)
